@@ -10,7 +10,8 @@ const EditTaskModal = ({
   device,
   setOpenEditTask,
   taskIndex,
-  perColIndex = 0,
+  prevColIndex = 0,
+  setIsTaskModalOpen,
 }) => {
   const dispatch = useDispatch();
   const board = useSelector((state) => state.boards).find(
@@ -18,13 +19,15 @@ const EditTaskModal = ({
   );
   const columns = board.columns;
   //
-  const col = columns.find((col, index) => index === perColIndex);
-  const [status, setStatus] = useState(columns[perColIndex].name);
+  const col = columns.find((col, index) => index === prevColIndex);
+  const task = col ? col.tasks.find((task, index) => index === taskIndex) : [];
+  const [status, setStatus] = useState(columns[prevColIndex].name);
   //Hooks
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
   const [isValid, setIsValid] = useState(true);
-  const [newColIndex, setNewColIndex] = useState(perColIndex);
+  const [isFirstLoad, setIsFirstLoad] = useState(true);
+  const [newColIndex, setNewColIndex] = useState(prevColIndex);
   const [subtasks, setSubtasks] = useState([
     { title: "", isCompleted: false, id: uuidv4() },
     { title: "", isCompleted: false, id: uuidv4() },
@@ -79,12 +82,25 @@ const EditTaskModal = ({
           subtasks,
           status,
           taskIndex,
-          perColIndex,
+          prevColIndex,
           newColIndex,
         })
       );
     }
   };
+
+  // To enable editing of task when user want to edit
+  if (type === "edit" && isFirstLoad) {
+    setSubtasks(
+      task.subtasks.map((subtask) => {
+        return { ...subtask, id: uuidv4() };
+      })
+    );
+    setTitle(task.title);
+    setDesc(task.description);
+    setIsFirstLoad(false);
+  }
+
   // function to select current status task
   const onChangeStatus = (e) => {
     setStatus(e.target.value);
@@ -116,7 +132,7 @@ const EditTaskModal = ({
             <input
               className="bg-transparent px-4 py-2 outline-none focus:border-0 rounded-md text-sm border border-gray-600 focus:outline-[#635fc7] ring-0"
               type="text"
-              value={desc}
+              value={title}
               onChange={(e) => setDesc(e.target.value)}
               placeholder="e.g Take a 30mins break by 2 PM  "
             />
@@ -128,7 +144,7 @@ const EditTaskModal = ({
             </label>
             <textarea
               className="bg-transparent min-h-[200px] px-4 py-2 outline-none focus:border-0 rounded-md text-sm border border-gray-600 focus:outline-[#635fc7] ring-0"
-              value={title}
+              value={desc}
               onChange={(e) => setTitle(e.target.value)}
               placeholder="e.g Take a 30mins break by 2 PM to take coffee and take a walk"
             />
@@ -216,7 +232,8 @@ EditTaskModal.propTypes = {
   type: PropTypes.string,
   device: PropTypes.string,
   setOpenEditTask: PropTypes.func,
-  taskIndex: PropTypes.string,
-  perColIndex: PropTypes.number,
+  taskIndex: PropTypes.number,
+  prevColIndex: PropTypes.number,
+  setIsTaskModalOpen: PropTypes.func,
 };
 export default EditTaskModal;

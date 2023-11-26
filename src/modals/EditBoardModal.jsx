@@ -150,7 +150,7 @@ const EditBoardModal = ({ setBoardModalOpen, type }) => {
 };
 
 EditBoardModal.propTypes = {
-  setBoardModalOpen: PropTypes.string,
+  setBoardModalOpen: PropTypes.func,
   type: PropTypes.string,
 };
 

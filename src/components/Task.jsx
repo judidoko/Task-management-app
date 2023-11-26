@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { PropTypes } from "prop-types";
 import { useSelector } from "react-redux";
 import TaskModal from "../modals/TaskModal";
@@ -20,10 +20,19 @@ const Task = ({ taskIndex, colIndex }) => {
     }
   });
 
+  const handleOnDrag = (e) => {
+    e.dataTransfer.setData(
+      "text",
+      JSON.stringify({ taskIndex, prevColIndex: colIndex })
+    );
+  };
+
   return (
     <>
       <div>
         <div
+          onDragStart={handleOnDrag}
+          draggable
           onClick={() => {
             setIsTaskModalOpen(true);
           }}

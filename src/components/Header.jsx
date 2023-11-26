@@ -12,7 +12,7 @@ import ElipsisMenu from "./ElipsisMenu";
 import DeleteModal from "../modals/DeleteModal";
 import boardsSlice from "../redux/boardsSlice";
 
-const Header = ({ setBoardModalOpen, boardModalOpen }) => {
+const Header = ({ boardModalOpen, setBoardModalOpen }) => {
   const dispatch = useDispatch();
   // Hooks
   const [openDropdown, setOpenDropdown] = useState(false);
@@ -29,6 +29,7 @@ const Header = ({ setBoardModalOpen, boardModalOpen }) => {
     setBoardModalOpen(true);
     setIsElipsisOpen(false);
   };
+
   // To close task function
   const setOpenCloseModal = () => {
     setIsCloseOpenModal(true);

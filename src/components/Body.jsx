@@ -3,6 +3,8 @@ import { PropTypes } from "prop-types";
 import SideBar from "./SideBar";
 import { useSelector } from "react-redux";
 import Column from "./Column";
+import EmptyBoard from "./EmptyBoard";
+import EditBoardModal from "../modals/EditBoardModal";
 
 const Body = ({ setBoardModalOpen, boardModalOpen }) => {
   //  Hooks
@@ -35,9 +37,29 @@ const Body = ({ setBoardModalOpen, boardModalOpen }) => {
         }
       >
         {window[0] >= 768 && <SideBar />}
-        {columns.map((col, index) => (
-          <Column key={index} colIndex={index} />
-        ))}
+        {/* Columns Section */}
+        {columns.length > 0 ? (
+          <>
+            {columns.map((col, index) => (
+              <Column key={index} colIndex={index} />
+            ))}
+            <div
+              onClick={() => {
+                setBoardModalOpen(true);
+              }}
+              className="h-screen dark:bg-[#2b2c3740] flex justify-center items-center font-bold text-2xl hover:text-[#635fc7] transition duration-300 cursor-pointer bg-[#e9effa] scrollbar-hide mb-2 mx-5 pt-[90px min-w-[280px] text-[#828fa3] mt-[135px] rounded-lg] "
+            >
+              + New Column
+            </div>
+          </>
+        ) : (
+          <>
+            <EmptyBoard type="edit" />
+          </>
+        )}
+        {boardModalOpen && (
+          <EditBoardModal type="edit" setBoardModalOpen={setBoardModalOpen} />
+        )}
       </div>
     </>
   );

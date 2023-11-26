@@ -5,12 +5,16 @@ import Elipsis from "../assets/icon-vertical-ellipsis.svg";
 import ElipsisMenu from "./../components/ElipsisMenu";
 import Subtask from "../components/Subtask";
 import boardsSlice from "../redux/boardsSlice";
+import DeleteModal from "./DeleteModal";
+import EditTaskModal from "./EditTaskModal";
 
 const TaskModal = ({ colIndex, taskIndex, setIsTaskModalOpen }) => {
   const dispatch = useDispatch();
   // Hook
   const [elipsisMenuOpen, setElipsisMenuOpen] = useState(false);
-  const [isCloseModalOpen, setIsCloseModalOpen] = useState(false);
+  const [isCloseOpenModal, setIsCloseOpenModal] = useState(false);
+  const [isAddTaskModalOpen, setIsAddTaskModalOpen] = useState(false);
+
   //
   const boards = useSelector((state) => state.boards);
   const board = boards.find((board) => board.isActive);
@@ -28,15 +32,24 @@ const TaskModal = ({ colIndex, taskIndex, setIsTaskModalOpen }) => {
   // Hooks
   const [newColIndex, setNewColIndex] = useState(columns.indexOf(col));
   const [status, setStatus] = useState(task.status);
-  //
-  const setOpenEditModal = () => {};
+  // Function To Open Edit Modal for Task
+  const setOpenEditModal = () => {
+    setIsAddTaskModalOpen(true);
+    setElipsisMenuOpen(false);
+  };
 
-  const setOpenCloseModal = () => {};
+  // Function To delete Task
+  const setOpenCloseModal = () => {
+    setElipsisMenuOpen(false);
+    setIsCloseOpenModal(true);
+  };
+
   // onChange function
   const onChange = (e) => {
     setStatus(e.target.value);
     setNewColIndex(e.target.selectedIndex);
   };
+
   // onCloseModal function
   const onCloseModal = (e) => {
     if (e.target !== e.currentTarget) {
@@ -51,6 +64,13 @@ const TaskModal = ({ colIndex, taskIndex, setIsTaskModalOpen }) => {
       })
     );
     setIsTaskModalOpen(false);
+  };
+
+  // Delete task function
+  const onDeleteBtnClick = () => {
+    dispatch(boardsSlice.actions.deleteTask({ taskIndex, colIndex }));
+    setIsTaskModalOpen(false);
+    setIsCloseOpenModal(false);
   };
   return (
     <>
@@ -115,6 +135,23 @@ const TaskModal = ({ colIndex, taskIndex, setIsTaskModalOpen }) => {
               ))}
             </select>
           </div>
+          {isCloseOpenModal && (
+            <DeleteModal
+              onDeleteBtnClick={onDeleteBtnClick}
+              setIsCloseOpenModal={setIsCloseOpenModal}
+              title={task.title}
+              type="task"
+            />
+          )}
+          {isAddTaskModalOpen && (
+            <EditTaskModal
+              setOpenEditTask={setIsAddTaskModalOpen}
+              type="edit"
+              taskIndex={taskIndex}
+              pervColIndex={colIndex}
+              setIsTaskModalOpen={setIsTaskModalOpen}
+            />
+          )}
         </div>
       </div>
     </>
