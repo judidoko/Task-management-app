@@ -7,10 +7,12 @@ import { Switch } from "@headlessui/react";
 import useDarkMode from "../Hooks/DarkMode";
 import PropTypes from "prop-types";
 import boardsSlice from "../redux/boardsSlice";
+import EditBoardModal from "../modals/EditBoardModal";
 
-const HeaderDropdown = ({ setOpenDropdown, setBoardModalOpen }) => {
+const HeaderDropdown = ({ setOpenDropdown }) => {
   const dispatch = useDispatch();
   // Hooks
+  const [boardModalOpen, setBoardModalOpen] = useState(false);
   const [colorTheme, setColorTheme] = useDarkMode();
   const [darkSide, setDarkSide] = useState(
     colorTheme === "light" ? true : false
@@ -25,6 +27,9 @@ const HeaderDropdown = ({ setOpenDropdown, setBoardModalOpen }) => {
 
   return (
     <>
+      {boardModalOpen && (
+        <EditBoardModal type="add" setBoardModalOpen={setBoardModalOpen} />
+      )}
       <div
         className="w-full py-10 px-6 absolute left-0 right bottom-[-100vh] top-16 bg-[#00000080]"
         onClick={(e) => {
@@ -91,6 +96,6 @@ const HeaderDropdown = ({ setOpenDropdown, setBoardModalOpen }) => {
 };
 HeaderDropdown.propTypes = {
   setOpenDropdown: PropTypes.func,
-  setBoardModalOpen: PropTypes.func,
+  // setBoardModalOpen: PropTypes.func,
 };
 export default HeaderDropdown;

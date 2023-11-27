@@ -36,7 +36,13 @@ const Body = ({ setBoardModalOpen, boardModalOpen }) => {
             : "bg-[#f4f7fd] w-fit h-screen flex dark:bg-[#20212c] scrollbar-hide overflow-auto gap-6"
         }
       >
-        {window[0] >= 768 && <SideBar />}
+        {/* SideBar Section */}
+        {windowSize[0] >= 768 && (
+          <SideBar
+            isSideBarOpen={isSideBarOpen}
+            setIsSideBarOpen={setIsSideBarOpen}
+          />
+        )}
         {/* Columns Section */}
         {columns.length > 0 ? (
           <>
