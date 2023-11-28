@@ -50,7 +50,7 @@ const HeaderDropdown = ({ setOpenDropdown }) => {
                 key={index}
                 className={`flex items-baseline dark:text-white space-x-2 px-5 py-4 ${
                   board.isActive &&
-                  "bg-[#635fc7] rounded-r-full text-white mr-8"
+                  "bg-[#2c5f2d] rounded-r-full text-white mr-8"
                 }`}
                 onClick={() => {
                   dispatch(boardsSlice.actions.setBoardActive({ index }));
@@ -61,7 +61,7 @@ const HeaderDropdown = ({ setOpenDropdown }) => {
               </div>
             ))}
             <div
-              className="flex items-baseline cursor-pointer space-x-2 text-[#635fc7] px-5 py-4"
+              className="flex items-baseline cursor-pointer space-x-2 text-[#2c5f2d] px-5 py-4"
               onClick={() => {
                 setBoardModalOpen(true);
                 setOpenDropdown(false);
@@ -77,7 +77,7 @@ const HeaderDropdown = ({ setOpenDropdown }) => {
                 checked={darkSide}
                 onChange={toggleDarkMode}
                 className={`${
-                  darkSide ? "bg-[#635fc7]" : "bg-gray-200"
+                  darkSide ? "bg-[#2c5f2d]" : "bg-gray-200"
                 } relative inline-flex h-6 w-11 items-center rounded-full`}
               >
                 <span

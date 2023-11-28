@@ -120,7 +120,7 @@ const TaskModal = ({ colIndex, taskIndex, setIsTaskModalOpen }) => {
               Current Status
             </label>
             <select
-              className="flex flex-grow px-4 py-2 rounded-md text-sm bg-transparent focus:border-0 border border-gray-300 focus:outline-[#635fc7] outline-none "
+              className="flex flex-grow px-4 py-2 rounded-md text-sm bg-transparent focus:border-0 border border-gray-300 focus:outline-[#2c5f2d] outline-none "
               value={status}
               onChange={onChange}
             >

@@ -88,7 +88,7 @@ const EditBoardModal = ({ setBoardModalOpen, type }) => {
           </label>
           <input
             type="text"
-            className="bg-transparent px-4 py-2 rounded-md outline-none text-sm border border-gray-600 fucus:outline-[#635fc7] outline-1 ring-0"
+            className="bg-transparent px-4 py-2 rounded-md outline-none text-sm border border-gray-600 fucus:outline-[#2c5f2d] outline-1 ring-0"
             placeholder="e.g Graphic Design"
             value={name}
             onChange={(e) => {
@@ -130,7 +130,7 @@ const EditBoardModal = ({ setBoardModalOpen, type }) => {
                 { name: "", task: [], id: uuidv4 },
               ]);
             }}
-            className="w-full items-center mt-2 hover:opacity-75 dark:text-[#635fc7] dark:bg-white text-white bg-[#635fc7] py-2 rounded-full"
+            className="w-full items-center mt-2 hover:opacity-75 dark:text-[#2c5f2d] dark:bg-white text-white bg-[#2c5f2d] py-2 rounded-full"
           >
             + Add new Column
           </button>
@@ -139,7 +139,7 @@ const EditBoardModal = ({ setBoardModalOpen, type }) => {
               const isValid = validate();
               if (isValid === true) onSubmit(type);
             }}
-            className="w-full items-center hover:opacity-75 dark:text-white dark:bg-[#635fc7] mt-8 relative text-white bg-[#635fc7] py-2 rounded-full"
+            className="w-full items-center hover:opacity-75 dark:text-white dark:bg-[#2c5f2d] mt-8 relative text-white bg-[#2c5f2d] py-2 rounded-full"
           >
             {type == "add" ? "Create New Board" : "Save Changes"}
           </button>

@@ -34,7 +34,7 @@ const SideBar = ({ isSideBarOpen, setIsSideBarOpen }) => {
           className={
             isSideBarOpen
               ? `min-w-[261px] bg-white dark:bg-[#2b2c37] fixed top-[72px] h-screen items-center left-0 z-20 `
-              : `bg-[#635fc7] dark:bg-[#2b2cc37] dark:hover:bg-[#635fc7] top-auto bottom-10 justify-center items-center hover:opacity-80 cursor-pointer p-0 transition duration-300 transform fixed w-[56px] h-[48px] rounded-r-full `
+              : `bg-[#2c5f2d] dark:bg-[#2b2cc37] dark:hover:bg-[#2c5f2d] top-auto bottom-10 justify-center items-center hover:opacity-80 cursor-pointer p-0 transition duration-300 transform fixed w-[56px] h-[48px] rounded-r-full `
           }
         >
           {isSideBarOpen && (
@@ -47,9 +47,9 @@ const SideBar = ({ isSideBarOpen, setIsSideBarOpen }) => {
                   {boards.map((board, index) => (
                     <div
                       key={index}
-                      className={`flex items-baseline space-x-2 px-5 mr-8 rounded-r-full duration-500 ease-in-out py-4 cursor-pointer hover:bg-white dark:hover:text-[#635fc7] dark:text-white ${
+                      className={`flex items-baseline space-x-2 px-5 mr-8 rounded-r-full duration-500 ease-in-out py-4 cursor-pointer hover:bg-white dark:hover:text-[#2c5f2d] dark:text-white ${
                         board.isActive &&
-                        "bg-[#635fc7] rounded-r-full text-white mr-8"
+                        "bg-[#2c5f2d] rounded-r-full text-white mr-8"
                       }`}
                       onClick={() => {
                         dispatch(boardsSlice.actions.setBoardActive({ index }));
@@ -63,7 +63,7 @@ const SideBar = ({ isSideBarOpen, setIsSideBarOpen }) => {
                     onClick={() => {
                       setBoardModalOpen(true);
                     }}
-                    className="flex items-baseline space-x-2 mr-8 rounded-r-full duration-500 ease-in-out cursor-pointer text-[#635fc7] px-5 py-4 hover:bg-[#635fc71a] hover:text-[#635fc7] dark:hover:bg-white "
+                    className="flex items-baseline space-x-2 mr-8 rounded-r-full duration-500 ease-in-out cursor-pointer text-[#2c5f2d] px-5 py-4 hover:bg-[#2c5f2d1a] hover:text-[#2c5f2d] dark:hover:bg-white "
                   >
                     <img src={boardIcon} alt="BoardIcon" className="h-4" />
                     <p className="text-lg font-bold">Create New Board</p>
@@ -76,7 +76,7 @@ const SideBar = ({ isSideBarOpen, setIsSideBarOpen }) => {
                     checked={darkSide}
                     onChange={toggleDarkMode}
                     className={`${
-                      darkSide ? "bg-[#635fc7]" : "bg-gray-200"
+                      darkSide ? "bg-[#2c5f2d]" : "bg-gray-200"
                     } relative inline-flex h-6 w-11 items-center rounded-full`}
                   >
                     <span
@@ -94,7 +94,7 @@ const SideBar = ({ isSideBarOpen, setIsSideBarOpen }) => {
           {isSideBarOpen ? (
             <div
               onClick={() => setIsSideBarOpen((state) => !state)}
-              className="flex items-center mt-2 absolute bottom-16 text-lg font-bold rounded-r-full hover:text-[#635fc7] cursor-pointer mr-6 mb-8 px-8 py-4 hover:bg-[#635fc71a] dark:hover:bg-white space-x-2 justify-center my-4 text-gray-500 "
+              className="flex items-center mt-2 absolute bottom-16 text-lg font-bold rounded-r-full hover:text-[#2c5f2d] cursor-pointer mr-6 mb-8 px-8 py-4 hover:bg-[#2c5f2d1a] dark:hover:bg-white space-x-2 justify-center my-4 text-gray-500 "
             >
               <img
                 src={hideSidebarIcon}

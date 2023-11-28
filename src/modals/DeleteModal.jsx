@@ -39,7 +39,7 @@ const DeleteModal = ({
             </button>
             <button
               onClick={() => setIsCloseOpenModal(false)}
-              className="w-full items-center font-semibold hover:opacity-75 bg-[#635fc71a] text-[#655fc7] py-2 rounded-full"
+              className="w-full items-center font-semibold hover:opacity-75 bg-[#2c5f2d1a] text-[#655fc7] py-2 rounded-full"
             >
               Cancel
             </button>

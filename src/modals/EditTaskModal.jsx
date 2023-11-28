@@ -130,7 +130,7 @@ const EditTaskModal = ({
               Task Name
             </label>
             <input
-              className="bg-transparent px-4 py-2 outline-none focus:border-0 rounded-md text-sm border border-gray-600 focus:outline-[#635fc7] ring-0"
+              className="bg-transparent px-4 py-2 outline-none focus:border-0 rounded-md text-sm border border-gray-600 focus:outline-[#2c5f2d] ring-0"
               type="text"
               value={title}
               onChange={(e) => setDesc(e.target.value)}
@@ -143,7 +143,7 @@ const EditTaskModal = ({
               Description
             </label>
             <textarea
-              className="bg-transparent min-h-[200px] px-4 py-2 outline-none focus:border-0 rounded-md text-sm border border-gray-600 focus:outline-[#635fc7] ring-0"
+              className="bg-transparent min-h-[200px] px-4 py-2 outline-none focus:border-0 rounded-md text-sm border border-gray-600 focus:outline-[#2c5f2d] ring-0"
               value={desc}
               onChange={(e) => setTitle(e.target.value)}
               placeholder="e.g Take a 30mins break by 2 PM to take coffee and take a walk"
@@ -163,7 +163,7 @@ const EditTaskModal = ({
                     onChange={(e) => {
                       onChange(subtask.id, e.target.value);
                     }}
-                    className="bg-transparent outline-none focus:border-0 flex-grow px-4 py-2 rounded-md text-sm border border-gray-600 focus:outline-[#635fc7]"
+                    className="bg-transparent outline-none focus:border-0 flex-grow px-4 py-2 rounded-md text-sm border border-gray-600 focus:outline-[#2c5f2d]"
                     placeholder="e.g Complete the button section"
                   />
                   <img
@@ -185,7 +185,7 @@ const EditTaskModal = ({
                   { title: "", isCompleted: false, id: uuidv4() },
                 ]);
               }}
-              className="w-full items-center dark:text-[#635fc7] dark:bg-white text-white bg-[#635fc7] py-3 rounded-full "
+              className="w-full items-center dark:text-[#2c5f2d] dark:bg-white text-white bg-[#2c5f2d] py-3 rounded-full "
             >
               + Add New subtask
             </button>
@@ -198,7 +198,7 @@ const EditTaskModal = ({
             <select
               value={status}
               onChange={(e) => onChangeStatus(e)}
-              className="flex flex-grow px-4 py-2 rounded-md text-sm bg-transparent focus:border-0 border border-gray-300 focus:outline-[#635fc7] outline-none"
+              className="flex flex-grow px-4 py-2 rounded-md text-sm bg-transparent focus:border-0 border border-gray-300 focus:outline-[#2c5f2d] outline-none"
             >
               {columns.map((column, index) => (
                 <option
@@ -218,7 +218,7 @@ const EditTaskModal = ({
                   setOpenEditTask(false);
                 }
               }}
-              className="w-full items-center text-white bg-[#635fc7] py-2 rounded-full"
+              className="w-full items-center text-white bg-[#2c5f2d] py-2 rounded-full"
             >
               {type === "edit" ? "Save Edit" : "Create Task"}
             </button>

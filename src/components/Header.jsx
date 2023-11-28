@@ -1,7 +1,6 @@
 import { useState } from "react";
-import Logo from "../assets/logo-mobile.svg";
-import iconDown from "../assets/icon-chevron-down.svg";
-import iconUp from "../assets/icon-chevron-up.svg";
+import { SlArrowDown } from "react-icons/sl";
+import { SlArrowUp } from "react-icons/sl";
 import Elipsis from "../assets/icon-vertical-ellipsis.svg";
 import HeaderDropdown from "./HeaderDropdown";
 import PropTypes from "prop-types";
@@ -11,6 +10,7 @@ import EditTaskModal from "./../modals/EditTaskModal";
 import ElipsisMenu from "./ElipsisMenu";
 import DeleteModal from "../modals/DeleteModal";
 import boardsSlice from "../redux/boardsSlice";
+import { TiThMenu } from "react-icons/ti";
 
 const Header = ({ boardModalOpen, setBoardModalOpen }) => {
   const dispatch = useDispatch();
@@ -49,20 +49,20 @@ const Header = ({ boardModalOpen, setBoardModalOpen }) => {
         <header className="flex justify-between dark:text-white items-center">
           {/* Left Side Section */}
           <div className="flex items-center space-x-2 md:space-x-4">
-            <img src={Logo} alt="Logo" className="h-6 w-6" />
-            <h3 className="hidden md:inline-block font-bold font-sans md:text-4xl">
+            <TiThMenu className="h-6 w-6 text-[#2C5F2D]" />
+            <h3 className="hidden md:inline-block font-bold font-sans text-[#2C5F2D] md:text-4xl">
               TMA
             </h3>
             <div className="flex items-center">
-              <h3 className="truncate max-w-[200px] md:text-2xl text-xl font-bold md:ml-20 font-sans">
+              <h3 className="truncate max-w-[200px] md:text-2xl text-xl underline decoration-4 font-bold md:ml-20 font-sans">
                 {board.name}
               </h3>
-              <img
-                src={openDropdown ? iconUp : iconDown}
-                alt="Dropdown Icon"
-                className="w-3 ml-2 cursor-pointer md:hidden"
+              <div
                 onClick={() => setOpenDropdown((state) => !state)}
-              />
+                className="w-3 ml-2 cursor-pointer md:hidden text-[#2C5F2D] text-2xl"
+              >
+                {openDropdown ? <SlArrowUp /> : <SlArrowDown />}
+              </div>
             </div>
           </div>
           {/* Right Side Section  */}
