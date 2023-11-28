@@ -2,7 +2,9 @@
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+About the Task Management:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- This app allow users to easily Create, organize and track theirs tasks or/and Projects.
+- The app helps users to stay organized with their tasks and projects of the day or week as the case maybe.
+- From creating boards and columns to adding tasks and subtasks, to moving tasks across columns with the drag and drop functionality. It offers a seamless and efficient way for users to manage their tasks
+- The app has dark and light mode toggle button
